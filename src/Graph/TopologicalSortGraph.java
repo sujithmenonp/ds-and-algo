@@ -1,15 +1,15 @@
 package Graph;
 
 import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.Stack;
 
-public class TraverseGraphDFS{
+public class TopologicalSortGraph {
 
     int V;
 
     LinkedList<Integer> adj[];
 
-    TraverseGraphDFS(int v){
+    TopologicalSortGraph(int v){
         V=v;
         adj= new LinkedList[V+1];
         for(int i=1;i<=V;i++){
@@ -20,7 +20,7 @@ public class TraverseGraphDFS{
         adj[s].add(e);
     }
 
-    void dfsUtil(int s, boolean[] visited){
+    void dfsUtil(int s, boolean[] visited, Stack<Integer> st){
 
         visited[s] = true;
 
@@ -29,20 +29,25 @@ public class TraverseGraphDFS{
         for(int i=0;i<d.size();i++){
 
             if(!visited[d.get(i)]) {
-                dfsUtil(d.get(i), visited);
+                dfsUtil(d.get(i), visited, st);
             }
         }
 
-        System.out.print(s+" ");
+        st.push(s);
     }
     void dfs(int s){
+        Stack<Integer> st = new Stack<>();
         boolean[] visited = new boolean[V+1];
-        dfsUtil(s,visited);
+        dfsUtil(s,visited,st);
+
+        while (!st.isEmpty()){
+           System.out.print(st.pop()+" ");
+        }
     }
 
     public static void main(String[] args){
 
-        TraverseGraphDFS graph = new TraverseGraphDFS(5);
+        TopologicalSortGraph graph = new TopologicalSortGraph(5);
         graph.addEdge(1,2);
         graph.addEdge(1,3);
         graph.addEdge(1,5);
