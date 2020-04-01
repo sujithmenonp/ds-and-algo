@@ -46,5 +46,3 @@ n%2!=0 and n%3!=0 and n%(6n+-1) should not be zero
 
 A prime square has exactly 3 divisors
 
-
-

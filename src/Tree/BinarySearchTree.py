@@ -4,7 +4,13 @@ class Node:
         self.right = None
         self.val = key
 
-
+'''
+       10 
+     /    \
+    8      13 
+   /   \
+  7      9 
+    '''
 class BinarySearchTree:
 
     def __init__(self, root):
