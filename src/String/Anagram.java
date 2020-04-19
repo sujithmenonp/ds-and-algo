@@ -48,9 +48,5 @@ public class Anagram {
             }
             r.add(r2);
         }
-
-
-
-        System.out.println(r.toString());
     }
 }
